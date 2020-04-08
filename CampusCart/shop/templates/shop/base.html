@@ -1,0 +1,310 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}My shop{% endblock %}</title>
+  <link href="{% static "css/base.css" %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>-->
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!--  <a class="navbar-brand" href="#">Navbar</a>-->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+{% if user.is_authenticated %}
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="{% url "shop:product_list" %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ user.username }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+          <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+           <a class="dropdown-item" href="{% url 'admin:index' %}">Admin Page</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search_contains" aria-label="Search">
+      <button class="btn btn-dark" type="submit" formaction=""  ">Search</button>
+    </form>
+    </hr>
+<!--   <div class="row">-->
+<!--     <ul>-->
+
+<!--  </div> <div class="card" style="width: 18rem;">-->
+<!--  <img src="{{Product.image}}" class="card-img-top" alt="...">-->
+<!--  <div class="card-body">-->
+<!--    <h5 class="card-title">{{Product.name}}</h5>-->
+<!--    <p class="card-text">{{ Product.description }}</p>-->
+<!--    <a href="#" class="btn btn-primary">add to cart </a>-->
+<!--  </div>-->
+<!--  </div>-->
+</nav>
+{% else %}
+ <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           CampusCart
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+          <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0"
+    form method="get" action="">
+<!--      {{myFilter.form}}-->
+      <input class="form-control mr-sm-2" type="search" placeholder="Search..." name="search_contains" aria-label="Search.... ">
+      <button class="btn btn-dark" type="submit">Search</button>
+    </form>
+<!--   </hr>-->
+<!--&lt;!&ndash;   <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;     <ul>&ndash;&gt;-->
+<!--   <div class="card" style="width: 18rem;">-->
+<!--  <img src="{{product.image}}" class="card-img-top" alt="...">-->
+<!--  <div class="card-body">-->
+<!--    <h5 class="card-title">{{product.name}}</h5>-->
+<!--    <p class="card-text">{{ product.description }}</p>-->
+<!--    <a href="#" class="btn btn-primary">add to cart </a>-->
+<!--  </div>-->
+</div>
+       {% for product in queryset %}
+       {% endfor %}
+<!--     </ul>-->
+<!--   </div>-->
+  </div>
+</nav>
+{% endif %}
+<!--<div>-->
+<!--  <div id="header">-->
+<!--    <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--      <li crname }}-->
+<!--        </a>-->
+<!--        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--          <a class="dropdown-item" href="#">Action</a>-->
+<!--          <a class="dropdlass="nav-item dropdown">-->
+<!--        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--          {{ user.useown-item" href="#">Another action</a>-->
+<!--          <div class="dropdown-divider"></div>-->
+<!--          <a class="dropdown-item" href="#">Something else here</a>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--&lt;!&ndash;  <a class="navbar-brand" href="#"></a>&ndash;&gt;-->
+<!--&lt;!&ndash;  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">&ndash;&gt;-->
+<!--&lt;!&ndash;    <span class="navbar-toggler-icon"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;  </button>&ndash;&gt;-->
+<!--      -->
+<!--    <form class="form-inline my-2 my-lg-0">-->
+<!--      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</nav>-->
+<!--     </div>-->
+
+
+<!--      <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--          <a class="navbar-brand" href="#">-->
+<!--    <img src="{% static "img/CampusCart.png "  %}" width="40" height="40" class="d-inline-block align-top" alt="">-->
+<!--    CampusCart-->
+<!--  </a>-->
+<!--{% if user.is_authenticated %}-->
+<!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--    <span class="navbar-toggler-icon"></span>-->
+<!--  </button>-->
+<!--  <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--    <ul class="navbar-nav mr-auto">-->
+<!--      <li class="nav-item active">-->
+<!--        <a class="nav-link" href="{% url 'logout' %}">logout <span class="sr-only">(current)</span></a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" href="{% url 'profile' %}">Profile</a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--        <li class="nav-item dropdown">-->
+<!--        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--          Dropdown-->
+<!--        </a>-->
+<!--        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--          <a class="dropdown-item" href="#">Action</a>-->
+<!--          <a class="dropdown-item" href="#">Another action</a>-->
+<!--          <div class="dropdown-divider"></div>-->
+<!--          <a class="dropdown-item" href="#">Something else here</a>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--      <form class="form-inline my-2 my-lg-0 md-form active-purple active-purple-2 mb-3">-->
+<!--         <i class="fas fa-search" aria-hidden="true"></i>-->
+<!--         <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"-->
+<!--    aria-label="Search">-->
+<!--      </form>-->
+<!--    <form class="form-inline my-2 my-lg-0 md-form active-purple active-purple-2 mb-3 ">-->
+<!--      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--      <button class="btn btn-dark" type="submit">Search</button>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</nav>-->
+<!--      </div>-->
+<!--      {% else %}-->
+<!--      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--    <span class="navbar-toggler-icon"></span>-->
+<!--  </button>-->
+<!--  <div class="collapse navbar-collapse form-inline my-2 my-lg-0 " id="navbarSupportedContent">-->
+<!--    <ul class="navbar-nav mr-auto">-->
+<!--      <li class="nav-item active">-->
+<!--        <a class="nav-link" href="{% url 'login' %}">login <span class="sr-only">(current)</span></a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" href="{% url 'register' %}">Register</a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--    <form class="form-inline my-2 my-lg-0">-->
+<!--      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</nav>-->
+<!--      {% endif %}-->
+  <!-- Image and text -->
+<!--<nav class="navbar navbar-light bg-light">-->
+<!--  <a class="navbar-brand" href="#">-->
+<!--    <img src="{% static "img/CampusCart.png "  %}" width="50" height="40" class="d-inline-block align-top" alt="">-->
+<!--    CampusCart-->
+<!--  </a>-->
+<!--</nav>-->
+<!--      <img src="{% static "img/CampusCart.png "  %}">-->
+<!--    <a href="/" class="logo" >CampusCart</a>-->
+<!--      {% if user.is_authenticated %}-->
+<!--      <form class="form-inline my-2 my-lg-0 ">-->
+<!--      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" action="">Search</button>-->
+<!--    </form>-->
+<!--      {% endif %}-->
+<!--  </div>-->
+<!--&lt;!&ndash;  Navbar Right Side&ndash;&gt;-->
+<!--  <div class="navbar -nav">-->
+<!--      <link href="{% static "css/base.css" %}" rel="stylesheet">-->
+
+<!--      {% if user.is_authenticated %}-->
+<!--      <nav class="blue">-->
+<!--    <div class="nav-wrapper">-->
+<!--&lt;!&ndash;      <a href="#" class="brand-logo">Logo</a>&ndash;&gt;-->
+<!--      <ul id="nav-mobile" class="right hide-on-med-and-down">-->
+<!--        <li><a href="{% url 'logout' %}">Logout</a></li>-->
+<!--        <li><a href="{% url 'profile' %}">profile</a></li>-->
+
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </nav>-->
+<!--        <a class="nav-item nav-link " href="{% url 'logout' %}">Logout</a>-->
+<!--        <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>-->
+
+<!--      {% else %}-->
+<!--     <nav class="blue">-->
+<!--    <div class="nav-wrapper">-->
+<!--&lt;!&ndash;      <a href="#" class="brand-logo">Logo</a>&ndash;&gt;-->
+<!--      <ul id="nav-mobile" class="right hide-on-med-and-down">-->
+<!--        <li><a href="{% url 'login' %}">Login</a></li>-->
+<!--        <li><a href="{% url 'register' %}">register</a></li>-->
+
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </nav>-->
+<!--         <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>-->
+<!--         <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>-->
+<!--      {% endif %}-->
+
+
+  {% if user.is_authenticated %}
+  <div id="subheader">
+    <div class="cart">
+      <img src="https://img.icons8.com/windows/32/000000/add-shopping-cart.png"/>
+      {% with total_items=cart|length %}
+          {% if cart|length > 0 %}
+            Your cart:
+            <a href="{% url "cart:cart_detail" %}">
+              {{ total_items }} item{{ total_items|pluralize }},
+              Ksh{{ cart.get_total_price }}
+            </a>
+          {% else %}
+            Your cart is empty.
+          {% endif %}
+        {% endwith %}
+    </div>
+  </div>
+  {% endif %}
+  <div id="content">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+  </div>
+<!-- Footer -->
+<footer class="page-footer font-small cyan darken-3">
+
+  <!-- Footer Elements -->
+  <div class="container">
+
+    <!-- Grid row-->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-12 py-5">
+        <div class="mb-5 flex-center">
+
+          <!-- Facebook -->
+          <a class="fb-ic">
+            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic">
+            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!-- Google +-->
+          <a class="gplus-ic">
+            <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Linkedin -->
+          <a class="li-ic">
+            <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Instagram-->
+          <a class="ins-ic">
+            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Pinterest-->
+          <a class="pin-ic">
+            <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
+          </a>
+        </div>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row-->
+
+  </div>
+  <!-- Footer Elements -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://web.facebook.com/">Kioge Oscar Maina</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

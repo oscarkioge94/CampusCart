@@ -1,0 +1,14 @@
+{% extends "shop/base.html"%}
+
+{% block content%}
+
+  </div> <div class="card" style="width: 18rem;">
+  <img src="{product.image}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{product.name}}</h5>
+    <p class="card-text">{{ Product.description }}</p>
+    <a href="#" class="btn btn-primary">add to cart </a>
+  </div>
+  </div>
+
+{% endblock %}
